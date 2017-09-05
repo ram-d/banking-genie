@@ -33,16 +33,12 @@ def makeWebhookResult(req):
     result = req.get("result")
     parameters = result.get("parameters")
     accountType = parameters.get("account-type")
-	
-	print(accountType)
-
+    print(accountType)	
     balance = {'Checking':4500, 'Savings':200, 'Business Checking':15000, 'Business Savings':1500}
-
     speech = "The balance on your " + accountType + " Account is " + str(balance[accountType]) + " dollars."
 	#speech = "The balance on your Checking Account is 4500 dollars."
     print("Response:")
     print(speech)
-
     return {
         "speech": speech,
         "displayText": speech,
@@ -50,7 +46,7 @@ def makeWebhookResult(req):
         # "contextOut": [],
         "source": "banking-genie"
     }
-
+	
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))  
 
