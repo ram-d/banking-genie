@@ -34,9 +34,9 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     accountType = parameters.get("account-type")
 
-    balance = {'Checking Account':4500, 'Savings Account':200, 'Business Checking':15000, 'Business Savings':1500}
+    balance = {'Checking':4500, 'Savings':200, 'Business':15000, 'Business':1500}
 
-    speech = "The balance on your " + accountType + " is " + str(balance[accountType]) + " dollars."
+    speech = "The balance on your " + accountType + " Account is " + str(balance[accountType]) + " dollars."
 
     print("Response:")
     print(speech)
