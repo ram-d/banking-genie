@@ -28,9 +28,7 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "account.balance":
-        return {}
-    elif req.get("result").get("action") == "account.balance":
+    if req.get("result").get("action") == "action.balance":
         result = req.get("result")
         parameters = result.get("parameters")
         accountType = parameters.get("account-type")
@@ -43,6 +41,21 @@ def makeWebhookResult(req):
             "displayText": speech,
             "source": "banking-genie"
         }
+    elif req.get("result").get("action") == "action.transfer":
+        result = req.get("result")
+        parameters = result.get("parameters")
+        person = parameters.get("person")
+        amount = parameters.get("unit-currency")
+        speech = "Sure, I have successfully transferred " + amount + " to your " + person + " from your Checking account. Would you like to perform any other transaction?"
+        print("Response:")
+        print(speech)
+        return {
+            "speech": speech,
+            "displayText": speech,
+            "source": "banking-genie"
+        }
+    else:
+        return {}
 	
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))  
