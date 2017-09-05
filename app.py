@@ -33,6 +33,8 @@ def makeWebhookResult(req):
     result = req.get("result")
     parameters = result.get("parameters")
     accountType = parameters.get("account-type")
+	
+	print(accountType)
 
     balance = {'Checking':4500, 'Savings':200, 'Business Checking':15000, 'Business Savings':1500}
 
