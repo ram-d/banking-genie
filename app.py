@@ -45,7 +45,7 @@ def makeWebhookResult(req):
         result = req.get("result")
         parameters = result.get("parameters")
         person = parameters.get("person")
-        amount = str(parameters.get("unit-currency"))
+        amount = str(parameters.get("unit-currency.original"))
         speech = "Sure, I have successfully transferred " + amount + " to your " + person + " from your Checking account. Would you like to perform any other transaction?"
         print("Response:")
         print(speech)
