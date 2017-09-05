@@ -1,0 +1,7 @@
+{
+  "name": "API.AI Banking Genie Webhook",
+  "description": "API.AI Banking Genie Webhook",
+  "repository": "https://github.com/svet4/banking-genie",
+  "logo": "http://xvir.github.io/img/apiai.png",
+  "keywords": ["api.ai", "natural language"]
+}
