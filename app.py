@@ -37,8 +37,7 @@ def makeWebhookResult(req):
     balance = {'Checking':4500, 'Savings':200, 'Business Checking':15000, 'Business Savings':1500}
 
     #speech = "The balance on your " + accountType + " Account is " + str(balance[accountType]) + " dollars."
-	speech = "The balance on your Checking Account is 4500 dollars."
-	
+	speech = "The balance on your Checking Account is 4500 dollars."	
     print("Response:")
     print(speech)
 
@@ -50,10 +49,7 @@ def makeWebhookResult(req):
         "source": "banking-genie"
     }
 
-
 if __name__ == '__main__':
-    port = int(os.getenv('PORT', 5000))
-
-    
+    port = int(os.getenv('PORT', 5000))  
 
     app.run(debug=True, port=port, host='0.0.0.0')
