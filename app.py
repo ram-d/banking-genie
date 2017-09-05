@@ -28,7 +28,7 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "action.balance":
+    if req.get("result").get("action") != "account.balance":
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
@@ -36,7 +36,7 @@ def makeWebhookResult(req):
 
     balance = {'Checking':4500, 'Savings':200, 'Business Checking':15000, 'Business Savings':1500}
 
-    speech = "The balance on your " + $accountType + " Account is " + $str(balance[accountType]) + " dollars."
+    speech = "The balance on your " + accountType + " Account is " + str(balance[accountType]) + " dollars."
 	#speech = "The balance on your Checking Account is 4500 dollars."
     print("Response:")
     print(speech)
