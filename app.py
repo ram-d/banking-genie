@@ -30,20 +30,19 @@ def webhook():
 def makeWebhookResult(req):
     if req.get("result").get("action") != "account.balance":
         return {}
-    result = req.get("result")
-    parameters = result.get("parameters")
-    accountType = parameters.get("account-type")
-    balance = {'Checking':4500, 'Savings':200, 'Business Checking':15000, 'Business Savings':1500}
-    speech = "The balance on your " + accountType + " Account is " + str(balance[accountType]) + " dollars. Is there anything else I can help you with?"
-    print("Response:")
-    print(speech)
-    return {
-        "speech": speech,
-        "displayText": speech,
-        #"data": {},
-        # "contextOut": [],
-        "source": "banking-genie"
-    }
+    elif req.get("result").get("action") == "account.balance":
+        result = req.get("result")
+        parameters = result.get("parameters")
+        accountType = parameters.get("account-type")
+        balance = {'Checking':4500, 'Savings':200, 'Business Checking':15000, 'Business Savings':1500}
+        speech = "The balance on your " + accountType + " Account is " + str(balance[accountType]) + " dollars. Is there anything else I can help you with?"
+        print("Response:")
+        print(speech)
+        return {
+            "speech": speech,
+            "displayText": speech,
+            "source": "banking-genie"
+        }
 	
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))  
