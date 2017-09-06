@@ -33,7 +33,7 @@ def makeWebhookResult(req):
         parameters = result.get("parameters")
         accountType = parameters.get("account-type")
         balance = {'Checking':'$4500', 'Savings':'$200', 'Business Checking':'$15000', 'Business Savings':'$1500'}
-        speech = "The balance on your " + accountType + " Account is " + balance[accountType] + " dollars. Is there anything else I can help you with?"
+        speech = "The balance on your " + accountType + " Account is " + balance[accountType] + ". Is there anything else I can help you with?"
         print("Response:")
         print(speech)
         return {
@@ -62,7 +62,7 @@ def makeWebhookResult(req):
         parameters = result.get("parameters")
         payee = parameters.get("payee")
         dueAmount = {'Georgia Power':'$120', 'Infinite Energy':'$90'}
-        if payee != "":
+        if payee != "None":
             speech = "Your bill for this month is " + dueAmount[payee] + ". Payment has been made successfully to " + payee + ". Is there anything else I can help you with?"
         else:
             speech = "Would you like to make a payment to Georgia Power or Infinite Energy?"
