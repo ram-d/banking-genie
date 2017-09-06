@@ -62,7 +62,7 @@ def makeWebhookResult(req):
         parameters = result.get("parameters")
         payee = parameters.get("payee")
         dueAmount = {'Georgia Power:$120', 'Infinite Energy:$90'}
-        if payee != null:
+        if payee != "":
             speech = "Your bill for this month is " + str(dueAmount[payee]) + ". Payment has been made successfully to " + payee + ". Is there anything else I can help you with?"
         else:
             speech = "Would you like to make a payment to Georgia Power or Infinite Energy?"
