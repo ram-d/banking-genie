@@ -32,7 +32,7 @@ def makeWebhookResult(req):
         result = req.get("result")
         parameters = result.get("parameters")
         accountType = parameters.get("account-type")
-        balance = {'Checking':4500, 'Savings':200, 'Business Checking':15000, 'Business Savings':1500}
+        balance = {'Checking:$4500', 'Savings:$200', 'Business Checking:$15000', 'Business Savings:$1500'}
         speech = "The balance on your " + accountType + " Account is " + str(balance[accountType]) + " dollars. Is there anything else I can help you with?"
         print("Response:")
         print(speech)
@@ -50,6 +50,22 @@ def makeWebhookResult(req):
         amount = str((result.get("contexts")[0]).get("parameters").get("unit-currency.original"))
         print(amount)
         speech = "Sure, I have successfully transferred " + amount + " to your " + person + " from your Checking account. Would you like to perform any other transaction?"
+        print("Response:")
+        print(speech)
+        return {
+            "speech": speech,
+            "displayText": speech,
+            "source": "banking-genie"
+        }
+    elif req.get("result").get("action") == "action.payment":
+        result = req.get("result")
+        parameters = result.get("parameters")
+        payee = parameters.get("payee")
+        dueAmount = {'Georgia Power:$120', 'Infinite Energy:$90'}
+        if payee != null:
+            speech = "Your bill for this month is " + str(dueAmount[payee]) + ". Payment has been made successfully to " + payee + ". Is there anything else I can help you with?"
+        else:
+            speech = "Would you like to make a payment to Georgia Power or Infinite Energy?"
         print("Response:")
         print(speech)
         return {
